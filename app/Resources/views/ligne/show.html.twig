@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ligne</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ ligne.id }}</td>
+            </tr>
+            <tr>
+                <th>Ligne</th>
+                <td>{{ ligne.Nom }}</td>
+            </tr>
+            <tr>
+                <th>Nbrestation</th>
+                <td>{{ ligne.nbreStation }}</td>
+            </tr>
+            <tr>
+                <th>Longuer</th>
+                <td>{{ ligne.longuer }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+
+        {{ form_start(delete_form) }}
+        <a href="{{ path('ligne_index') }}" class="btn btn-warning">Retour</a>
+        <a href="{{ path('ligne_edit', { 'id': ligne.id }) }}" class="btn btn-success">Modifier</a>
+        <input type="submit" value="Supprimer" class="btn btn-danger">
+        {{ form_end(delete_form) }}
+    </div>
+{% endblock %}

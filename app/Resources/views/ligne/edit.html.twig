@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Modifier edit</h1>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+    <input type="submit" value="Modifier" class="btn btn-success" />
+    {{ form_end(edit_form) }}
+
+    <br>
+    <div>
+
+        {{ form_start(delete_form) }}
+        <a href="{{ path('ligne_index') }}" class="btn btn-warning">Annuler</a>
+        <input type="submit" value="Supprimer" class="btn btn-danger">
+        {{ form_end(delete_form) }}
+    </div>
+{% endblock %}

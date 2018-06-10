@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des Lignes</h1>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Nombrebre stations</th>
+                <th>Longuer</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ligne in lignes %}
+            <tr>
+                <td><a href="{{ path('ligne_show', { 'id': ligne.id }) }}">{{ ligne.id }}</a></td>
+                <td>{{ ligne.nom }}</td>
+                <td>{{ ligne.nbreStation }}</td>
+                <td>{{ ligne.longuer }}</td>
+                <td>
+                    <a href="{{ path('ligne_show', { 'id': ligne.id }) }}" class="btn btn-success">Afficher</a> |
+                    <a href="{{ path('ligne_edit', { 'id': ligne.id }) }}" class="btn btn-warning">Modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div>
+        <a href="{{ path('ligne_new') }}" class="btn btn-primary">Ajouter</a>
+    </div>
+{% endblock %}

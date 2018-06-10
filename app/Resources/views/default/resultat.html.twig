@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>HORAIRES ET TARIFS</h1>
+{% if resultats|length ==0%}
+
+    <div>
+        <h4 style="color: red;">Pas de lignes qui passent par ces deux arrêts</h4>
+        <a href="{{ path('homepage') }}" class="btn btn-warning">Retour</a>
+
+    </div>
+{% else %}
+
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th>Ligne</th>
+            <th>Station départ</th>
+            <th>Heure départ</th>
+            <th>Station arrivé</th>
+            <th>Heure arrivé</th>
+            <th>Distance</th>
+            <th>Tarif(DT)</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for resultat in resultats %}
+            <tr>
+                <td>{{ resultat.nom }}</td>
+                <td>{{ resultat.stationDepart }}</td>
+                <td>{{ resultat.heureDepart }}</td>
+                <td>{{ resultat.stationArrive }}</td>
+                <td>{{ resultat.heureArrive }}</td>
+                <td>{{ resultat.distance }}</td>
+                <td>{{ resultat.tarif }}</td>
+                {% if not is_granted('ROLE_USER')%}
+                <td>
+                    <a href="{{ path('lignestation_show', { 'id': resultat.id }) }}" class="btn btn-success">Réserver</a>
+                </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <div>
+
+        <a href="{{ path('homepage') }}" class="btn btn-warning">Retour</a>
+
+    </div>
+{% endif %}
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+
+</style>
+{% endblock %}

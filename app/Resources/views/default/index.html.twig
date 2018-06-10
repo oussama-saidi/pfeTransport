@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>HORAIRES ET TARIFS</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <br/>
+    <input type="submit" value="Consulter" class="btn btn-success">
+    {{ form_end(form) }}
+
+    <br/>
+
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+
+</style>
+{% endblock %}

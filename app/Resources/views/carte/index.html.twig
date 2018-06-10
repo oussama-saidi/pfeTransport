@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Mes Cartes</h1>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Numero</th>
+                <th>Montant</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for carte in cartes %}
+            <tr>
+                <td><a href="{{ path('carte_show', { 'id': carte.id }) }}">{{ carte.id }}</a></td>
+                <td>{{ carte.numero }}</td>
+                <td>{{ carte.montant }}</td>
+                <td>
+                    <a href="{{ path('carte_show', { 'id': carte.id }) }}" class="btn btn-success">Afficher</a> |
+                    <a href="{{ path('carte_edit', { 'id': carte.id }) }}" class="btn btn-warning">Modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div>
+            <a href="{{ path('carte_new') }}" class="btn btn-primary">Ajouter</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des Stations</h1>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Numéro arrêt</th>
+                <th>Nom</th>
+                <th>Klm Station</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for station in stations %}
+            <tr>
+                <td><a href="{{ path('station_show', { 'id': station.id }) }}">{{ station.id }}</a></td>
+                <td>{{ station.numArret }}</td>
+                <td>{{ station.nom }}</td>
+                <td>{{ station.klmStation }}</td>
+                <td>
+                    <a href="{{ path('station_show', { 'id': station.id }) }}" class="btn btn-success">Afficher</a> |
+                    <a href="{{ path('station_edit', { 'id': station.id }) }}" class="btn btn-warning">Modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div>
+        <a href="{{ path('station_new') }}" class="btn btn-primary">Ajouter</a>
+    </div>
+{% endblock %}

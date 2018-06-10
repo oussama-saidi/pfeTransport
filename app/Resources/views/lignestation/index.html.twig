@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des routes</h1>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Ligne</th>
+                <th>Station départ</th>
+                <th>Station arrivé</th>
+                <th>Heure départ</th>
+                <th>Heure arrivé</th>
+                <th>Tarif</th>
+                <th>Distance</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ligneStation in ligneStations %}
+            <tr>
+                <td><a href="{{ path('lignestation_show', { 'id': ligneStation.id }) }}">{{ ligneStation.id }}</a></td>
+                <td>{{ ligneStation.ligne }}</td>
+                <td>{{ ligneStation.stationDepart }}</td>
+                <td>{{ ligneStation.stationArrive }}</td>
+                <td>{% if ligneStation.heureDepart %}{{ ligneStation.heureDepart|date('H:i:s') }}{% endif %}</td>
+                <td>{% if ligneStation.heureArrive %}{{ ligneStation.heureArrive|date('H:i:s') }}{% endif %}</td>
+                <td>{{ ligneStation.tarif }}</td>
+                <td>{{ ligneStation.distance }}</td>
+                <td>
+                    <a href="{{ path('lignestation_show', { 'id': ligneStation.id }) }}" class="btn btn-success">Afficher</a> |
+                    <a href="{{ path('lignestation_edit', { 'id': ligneStation.id }) }}" class="btn btn-warning">Modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div>
+        <a href="{{ path('lignestation_new') }}" class="btn btn-primary">Ajouter</a>
+    </div>
+{% endblock %}

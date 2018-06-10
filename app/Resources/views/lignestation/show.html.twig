@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Routes</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ ligneStation.id }}</td>
+            </tr>
+            <tr>
+                <th>Ligne</th>
+                <td>{{ ligneStation.ligne }}</td>
+            </tr>
+            <tr>
+                <th>Station départ</th>
+                <td>{{ ligneStation.stationDepart }}</td>
+            </tr>
+            <tr>
+                <th>Station arrivé</th>
+                <td>{{ ligneStation.stationArrive }}</td>
+            </tr>
+            <tr>
+                <th>Heuredepart</th>
+                <td>{% if ligneStation.heureDepart %}{{ ligneStation.heureDepart|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Heurearrive</th>
+                <td>{% if ligneStation.heureArrive %}{{ ligneStation.heureArrive|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Tarif</th>
+                <td>{{ ligneStation.tarif }}</td>
+            </tr>
+            <tr>
+                <th>Distance</th>
+                <td>{{ ligneStation.distance }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+
+        {{ form_start(delete_form) }}
+        <a href="{{ path('lignestation_index') }}" class="btn btn-warning">Retour</a>
+        <a href="{{ path('lignestation_edit', { 'id': ligneStation.id }) }}" class="btn btn-success">Modifier</a>
+        <input type="submit" value="Supprimer" class="btn btn-danger">
+        {{ form_end(delete_form) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Conducteur</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ conducteur.id }}</td>
+            </tr>
+            <tr>
+                <th>Nummatricule</th>
+                <td>{{ conducteur.numMatricule }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ conducteur.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ conducteur.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Numerostel</th>
+                <td>{{ conducteur.numerosTel }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+
+        {{ form_start(delete_form) }}
+        <a href="{{ path('conducteur_index') }}" class="btn btn-warning">Retour</a>
+        <a href="{{ path('conducteur_edit', { 'id': conducteur.id }) }}" class="btn btn-success">Modifier</a>
+        <input type="submit" value="Supprimer" class="btn btn-danger">
+        {{ form_end(delete_form) }}
+    </div>
+
+{% endblock %}

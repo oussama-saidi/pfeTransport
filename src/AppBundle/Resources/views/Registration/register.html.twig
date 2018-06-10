@@ -1,0 +1,17 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+    <div class="login-container">
+        <h1>Créer un compte</h1><br>
+    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'form-signin'}}) }}
+    {{ form_widget(form) }}
+
+    <div>
+        <input type="submit" value="{{ 'registration.submit'|trans }}" class="login login-submit" />
+    </div>
+    </div>
+    {{ form_end(form) }}
+
+{% endblock body %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ajouter Bus</h1>
+
+    <div class="">
+
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <br/>
+        <input type="submit" value="Ajouter" class="btn btn-primary"/>
+        <a href="{{ path('bus_index') }}" class="btn btn-warning">Annuler</a>
+    {{ form_end(form) }}
+    </div>
+{% endblock %}
